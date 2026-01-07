@@ -33,6 +33,8 @@ try:
             console.print("[magenta ]Invalid input")
 
 except KeyboardInterrupt:
+    # Exit the program on Ctrl+C
+    # Print summary statistics
     console.print("[yellow]Exiting the program.")
     console.print(f"[yellow]Correct answers: {correct_answers}/{total_questions}")
     if total_questions > 0:
