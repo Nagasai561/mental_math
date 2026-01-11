@@ -1,10 +1,22 @@
 operations:
   plus:
-    probability: 1.0
+    probability: 0.0
     sizes:
-      1/1: 0.5
-      2/1: 0.3
-      2/2: 0.2
+      1/1: 0.0
+      2/1: 0.0
+      2/2: 1.0
       3/1: 0.0
       3/2: 0.0
       3/3: 0.0
+  minus:
+    probability: 0.0
+    sizes:
+      1/1: 1.0
+  times:
+    probability: 0.0
+    sizes:
+      1/1: 1.0
+  divided by:
+    probability: 1.0
+    sizes:
+      1/1: 1.0

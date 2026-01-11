@@ -22,14 +22,20 @@ def validate_config(config):
                 f"Sum of size probabilities for operation '{op_name}' must be 1.0."
             )
 
+operation_str_to_func = {
+    "plus": lambda x, y: x + y,
+    "minus": lambda x, y: x - y,
+    "times": lambda x, y: x * y,
+    "divided by": lambda x, y: x // y
+}
 
 # Generate question and answer based on configuration
 def generate_qa():
-    operation_types = list(config["operations"].keys())
-    operation_probs = [
+    operation_types: list[str] = list(config["operations"].keys())
+    operation_probs: list[float] = [
         config["operations"][op]["probability"] for op in operation_types
     ]
-    operation = random.choices(operation_types, weights=operation_probs)[0]
+    operation: str = random.choices(operation_types, weights=operation_probs)[0]
 
     digit_pairs = config["operations"][operation]["sizes"]
     digit_pair_types = list(digit_pairs.keys())
@@ -48,7 +54,7 @@ def generate_qa():
     random.shuffle(numbers)
 
     question = f"{numbers[0]} {operation} {numbers[1]}"
-    answer = big_number + small_number
+    answer = operation_str_to_func[operation](numbers[0], numbers[1])
 
     return question, answer
 
